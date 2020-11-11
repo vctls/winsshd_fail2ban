@@ -77,7 +77,7 @@ if ($notInRules.count -eq 0) {
 
 Write-Host "`nThe following addresses have no corresponding rule:"
 
-foreach ($notInRules in $ip) {
+foreach ($ip in $notInRules) {
     Write-Host $ip
 }
 

@@ -12,3 +12,18 @@ Will most certainly need an elevated command prompt.
 .\winsshd_fail2ban.ps1 "<path_to_the_log_file>"
 ```
 
+## What it does
+
+1. Check the given log for authentication failures.
+2. Retrieve the corresponding IPs.
+3. Check if there's already an existing blocking rule for each IP.
+4. Create a new rule if it does not exist.
+
+All firewall rules are created in the group "WinSSHD Fail2Ban".
+
+## TODO
+
+Loading existing firewall rules is slow. Find a better way to check if a rule exists.
+
+Implement some way to make automation easier with PowerShell jobs or the Task Scheduler.  
+Automatically checking yesterday logs on logon would be nice. Or maybe even all unchecked logs.
