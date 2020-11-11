@@ -19,11 +19,13 @@ Will most certainly need an elevated command prompt.
 3. Check if there's already an existing blocking rule for each IP.
 4. Create a new rule if it does not exist.
 
-All firewall rules are created in the group "WinSSHD Fail2Ban".
+All firewall rules are created in the group "WinSSHD Fail2Ban" so they can easily be retrieved.
 
 ## TODO
 
 Loading existing firewall rules is slow. Find a better way to check if a rule exists.
 
-Implement some way to make automation easier with PowerShell jobs or the Task Scheduler.  
+Make automation easier with PowerShell jobs or the Task Scheduler.  
 Automatically checking yesterday logs on logon would be nice. Or maybe even all unchecked logs.
+
+Make it possible to automatically delete all rules in the "WinSSHD Fail2Ban" group.
