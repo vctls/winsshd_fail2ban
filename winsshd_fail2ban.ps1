@@ -6,9 +6,9 @@ if ($path.Length -eq 0) {
 }
 
 # Log file name examples: 
+# C:\Program Files\Bitvise SSH Server\Logs\BvSshServer20201110-202611845-P0100.log
 # BvSshServer20200130-055227539-P0100.log
 # BvSshServer20200612-090506535-P0200.log
-# C:\Program Files\Bitvise SSH Server\Logs\BvSshServer20201110-202611845-P0100.log
 # Not sure what the P0X00 part is.
 
 Write-Host "Starting WinSSHD Fail2Ban"
