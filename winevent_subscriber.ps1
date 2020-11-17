@@ -48,8 +48,6 @@ $Action = {
                 -RemoteAddress $ip `
                 -Direction Inbound `
                 -Action Block
-            } else {
-                #[System.Windows.MessageBox]::Show($Matches.1)
             }
         }
     }
