@@ -30,12 +30,14 @@ $Action = {
         #         statusCode: BadObfsKeyword
 
         # Check the event type.
-        $entry.Message -match 'name: ([A-Z0-9_]+)'
+        $message = $entry.Message
+        
+        $message -match 'name: ([A-Z0-9_]+)'
         $type = $Matches.1
 
         if ($type -in $failureTypes) {
              # TODO Make it work for IPV6. Maybe.
-            $entry.Message -match 'remoteAddress: ([0-9\.]+):\d+'
+            $message -match 'remoteAddress: ([0-9\.]+):\d+'
             $ip = $Matches.1
 
             $group = "WinSSHD Fail2Ban"
@@ -47,6 +49,7 @@ $Action = {
                 -DisplayName "$group $ip" `
                 -RemoteAddress $ip `
                 -Direction Inbound `
+                -Description $message `
                 -Action Block
             }
         }

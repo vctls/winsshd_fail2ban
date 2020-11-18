@@ -4,7 +4,11 @@ A small PowerShell script that creates Windows firewall blocking rules from auth
 
 I wrote this because I wasn't satisfied with Bitvise SSH Server making only temporary bans, and not giving you the option of banning obfuscation failures.
 
-## Usage
+
+## Log scrapping script
+
+### Usage
+
 
 Will most certainly need an elevated command prompt.
 
@@ -12,7 +16,7 @@ Will most certainly need an elevated command prompt.
 .\winsshd_fail2ban.ps1 "<path_to_the_log_file>"
 ```
 
-## What it does
+### What it does
 
 1. Check the given log for authentication failures.
 2. Retrieve the corresponding IPs.
@@ -21,11 +25,27 @@ Will most certainly need an elevated command prompt.
 
 All firewall rules are created in the group "WinSSHD Fail2Ban" so they can easily be retrieved.
 
-## TODO
 
-Loading existing firewall rules is slow. Find a better way to check if a rule exists.
+## Event subscriber script
 
-Make automation easier with PowerShell jobs or the Task Scheduler.  
-Automatically checking yesterday logs on logon would be nice. Or maybe even all unchecked logs.
+### Usage
 
-Make it possible to automatically delete all rules in the "WinSSHD Fail2Ban" group.
+First, you need to configure Bitvise SSH Server to write into the Windows application event log.
+
+```cmd
+powershell -NoExit winevent_subscriber.ps1
+```
+
+You can put that in a scheduled task.
+
+The `-NoExit` option is required.
+The script uses `Register-ObjectEvent`, which is only valid for the current PowerShell session.
+If you close the session, it stops working.
+
+### What it does
+
+The script listens for BvSshServer events in the event log.
+When a corresponding event is fired, the script checks the event type and IP address.
+If the event type is in the list of bannable events and the IP is not excluded, it immediately adds a new blocking firewall rule for that IP.
+
+The whole event message is added to the rule description, so you can check precisely what event caused its creation.
