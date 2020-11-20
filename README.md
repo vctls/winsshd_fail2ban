@@ -1,8 +1,8 @@
 # WinSSHD Fail2Ban
 
-A small PowerShell script that creates Windows firewall blocking rules from authentication failures in Bitvise SSH Server logs.
+A small PowerShell script that creates Windows firewall blocking rules from authentication failures in [Bitvise SSH Server](https://www.bitvise.com/ssh-server) logs, inspired by [Fail2Ban](https://www.fail2ban.org/wiki/index.php/Main_Page).
 
-I wrote this because I wasn't satisfied with Bitvise SSH Server making only temporary bans, and not giving you the option of banning obfuscation failures.
+I wrote this because I wasn't satisfied with Bitvise SSH Server making only temporary bans, and not giving you the option of banning obfuscation failures and other types of events.
 
 
 ## Log scrapping script
