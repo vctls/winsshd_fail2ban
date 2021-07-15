@@ -49,3 +49,8 @@ When a corresponding event is fired, the script checks the event type and IP add
 If the event type is in the list of bannable events and the IP is not excluded, it immediately adds a new blocking firewall rule for that IP.
 
 The whole event message is added to the rule description, so you can check precisely what event caused its creation.
+
+### Cleaning up
+
+There may be multiple simultaneous connection attempts from the same address, which result in duplicate rules.  
+For lack of a better system, you can use the `remove_duplicates` script to cleanup these rules.  
