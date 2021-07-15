@@ -92,4 +92,4 @@ foreach ($ip in $notInRules) {
         -Action Block
 }
 
-Write-Host "`nAll addresses have been blocked in the firewall. Exiting..."
+Write-Host "`nAll addresses have been blocked in the firewall."
